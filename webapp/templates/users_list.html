@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <ol>
+        {% for user in users %}
+            <li>
+                <p>{{ user.name }}</p>
+            </li>
+        {% endfor %}
+
+    </ol>
+
+{% endblock %}

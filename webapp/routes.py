@@ -1,7 +1,7 @@
 import flask
 
-from . import app       # . is webapp/
-from . import forms, news_functions
+from . import app, db       # . is webapp/
+from . import forms, news_functions, models
 
 @app.route("/")
 def home():
@@ -44,17 +44,35 @@ def search_article():
 # The password needs to contain 6 to 12 characters
 @app.route("/sign-up", methods=["GET","POST"])
 def signup():
+    """
+    The function needs to add the user to the DB
+    :return:
+    """
     form = forms.SignUpForm()
 
     if flask.request.method == "POST":
         if form.validate_on_submit():
             username = form.username.data
             password = form.password.data
-            print(f"{username} is trying to register with password {password}")
+
+            # Create user
+            user = models.User(name=username, password=password)
+            # Add it to the DB
+            db.session.add(user)
+            # Commit your changes
+            db.session.commit()
+            print(f"{username} was registered successfully")
 
     return flask.render_template("signup.html", form=form)
 
 
+# Create a route that displays a list of all the registered users
+@app.route("/users")
+def users_list():
+    # Retrieve users
+    users = models.User.query.all()            # Return a list of users
+    # Create users_list.html
+    return flask.render_template("users_list.html", users=users)
 
 
 

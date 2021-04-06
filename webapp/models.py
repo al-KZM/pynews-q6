@@ -1,6 +1,17 @@
 # MODELS.py
 from . import db  # Database bridge created in __init__.py
 
+"""
+user
++-----------+----------------+--------------------+
+|  id (PK)  |  name (str64)  |  password (str64)  |
++-----------+----------------+--------------------+
+|           |                |                    |
++-----------+----------------+--------------------+
+|           |                |                    |
++-----------+----------------+--------------------+
+"""
+
 class User(db.Model): # db.Model is required if you want to create an SQL model
 
     # Every attribute is a class variable
