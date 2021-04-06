@@ -5,7 +5,7 @@
     <ol>
         {% for user in users %}
             <li>
-                <p>{{ user.name }}</p>
+                <a href="{{ url_for('profile_page', user_id=user.id) }}">{{ user.name }}</a>
             </li>
         {% endfor %}
 

@@ -1,18 +1,23 @@
 # MODELS.py
-from . import db  # Database bridge created in __init__.py
+import flask_login
 
-"""
-user
-+-----------+----------------+--------------------+
-|  id (PK)  |  name (str64)  |  password (str64)  |
-+-----------+----------------+--------------------+
-|           |                |                    |
-+-----------+----------------+--------------------+
-|           |                |                    |
-+-----------+----------------+--------------------+
-"""
+from . import db, login_manager  # Database bridge created in __init__.py
 
-class User(db.Model): # db.Model is required if you want to create an SQL model
+
+@login_manager.user_loader
+def user_loader(user_id):
+    return User.query.get(user_id)
+
+
+class User(db.Model, flask_login.UserMixin): # db.Model is required if you want to create an SQL model
+    """
+    user
+    +-----------+----------------+--------------------+
+    |  id (PK)  |  name (str64)  |  password (str64)  |
+    +-----------+----------------+--------------------+
+    |           |                |                    |
+    +-----------+----------------+--------------------+
+    """
 
     # Every attribute is a class variable
 
