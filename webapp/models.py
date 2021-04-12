@@ -18,14 +18,10 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     |           |                |                    |          <Quote> object            |        1           |
     +-----------+----------------+--------------------+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+--------------------+
     """
-
-    # Every attribute is a class variable
-
     id = db.Column(db.Integer(), primary_key=True)
 
     name = db.Column(db.String(64))
     password = db.Column(db.String(64))
-
 
     fav_quote = db.relationship('Quote', backref="user", uselist=False) # uselist=False <--> OneToOne relationship
 
@@ -47,3 +43,29 @@ class Quote(db.Model):
     date     = db.Column(db.DateTime(), nullable=True)
 
     user_id  = db.Column(db.Integer(), db.ForeignKey("user.id"))
+
+
+
+# Given a quote and a user --> We want to link them
+# 1) Set user.fav_quote to be the quote
+# 2) Set quote.user_id to be the user's id
+# 3) Set quote.user to be the user
+
+
+################ TWO MODELS #################
+
+
+# Book:
+    # title
+    # description
+    # language
+    # --> author
+
+# Human:
+    # Name
+    # --> written_book
+
+
+
+
+
