@@ -157,7 +157,7 @@ def fav_quote(quote_id):
         # Commit our changes
         db.session.commit()
 
-    return flask.redirect("/")
+    return flask.redirect("/quotes")
 
 
 @app.route("/fav_book/<int:book_id>")
@@ -169,7 +169,7 @@ def fav_book(book_id):
 
         db.session.commit()
 
-    return flask.redirect("/")
+    return flask.redirect("/books")
 
 
 @app.route("/populate")
