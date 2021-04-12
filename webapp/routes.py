@@ -153,9 +153,12 @@ def populate():
         db.session.add(user)
 
     for q in quotes:
-        quote, author = q.split(" -")
-        quote_obj = models.Quote(sentence=quote, author=author)
-        db.session.add(quote_obj)
+        try:
+            quote, author = q.split(" -")
+            quote_obj = models.Quote(sentence=quote, author=author)
+            db.session.add(quote_obj)
+        except:
+            pass
 
     db.session.commit()
 
