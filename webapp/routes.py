@@ -123,6 +123,11 @@ def profile_page(user_id):
     return flask.render_template("user_profile.html", user=user)
 
 
+@app.route('/quotes')
+def quotes_list():
+
+
+
 
 
 
