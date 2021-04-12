@@ -4,7 +4,7 @@
     <ul>
         {% for quote in quotes %}
             {% if quote.user is not None %}
-            <li> {{ quote.sentence }} ({{ quote.author }})</li>
+                <li> {{ quote.sentence }} ({{ quote.author }})</li>
             {% endif %}
         {% endfor %}
     </ul>
