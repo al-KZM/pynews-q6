@@ -156,22 +156,14 @@ def fav_quote(quote_id):
 
 @app.route("/populate")
 def populate():
-    return "Protected"
     import requests
+    url = "https://raw.githubusercontent.com/benoitvallon/100-best-books/master/books.json"
+    books = requests.get(url).json()
 
-    names = ["Rick", "Summer", "Jerry", "Morty", "Beth"]
-
-    quotes = requests.get("https://raw.githubusercontent.com/AndrewReitz/rick-and-morty-quotes-json/master/rick-and-morty-quotes.json").json()
-
-    for name in names:
-        user = models.User(name=name.lower(), password="chocolate")
-        db.session.add(user)
-
-    for q in quotes:
+    for book in books:
         try:
-            quote, author = q.split(" -")
-            quote_obj = models.Quote(sentence=quote, author=author)
-            db.session.add(quote_obj)
+            book_obj = models.Book(title=book["title"])
+            db.session.add(book_obj)
         except:
             pass
 
