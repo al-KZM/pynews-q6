@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
         {% for book in books %}
-            <li> {{ book.title }} <a href="#">(Add to favourite)</a></li>
+            <li> {{ book.title }} <a href="{{ url_for('fav_book', book_id=book.id) }}">(Add to favourite)</a></li>
         {% endfor %}
     </ul>
 {% endblock %}
