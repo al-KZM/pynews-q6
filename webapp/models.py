@@ -30,9 +30,15 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 class Quote(db.Model):
     """
     quote
-    +-----------+-------------------+--------------------+
-    |  id (PK)  |  sentence(str64)  |    author (str64)  |
-    +-----------+-------------------+--------------------+
-    |           |                   |                    |
-    +-----------+-------------------+--------------------+
+    +-----------+-------------------+--------------------+--------------------+
+    |  id (PK)  |  sentence(str64)  |    author (str64)  |   date (datetime)  |
+    +-----------+-------------------+--------------------+--------------------+
+    |           |                   |                    |                    |
+    +-----------+-------------------+--------------------+--------------------+
     """
+
+    id = db.Column(db.Integer(), primary_key=True)
+
+    sentence = db.Column(db.String(256), nullable=False)
+    author   = db.Column(db.String(64))
+    date     = db.Column(db.DateTime())
