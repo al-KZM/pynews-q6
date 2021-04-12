@@ -46,26 +46,3 @@ class Quote(db.Model):
 
 
 
-# Given a quote and a user --> We want to link them
-# 1) Set user.fav_quote to be the quote
-# 2) Set quote.user_id to be the user's id
-# 3) Set quote.user to be the user
-
-
-################ TWO MODELS #################
-
-
-# Book:
-    # title
-    # description
-    # language
-    # --> author
-
-# Human:
-    # Name
-    # --> written_book
-
-
-
-
-

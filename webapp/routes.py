@@ -125,7 +125,7 @@ def profile_page(user_id):
 
 @app.route('/quotes')
 def quotes_list():
-
+    pass
 
 
 
