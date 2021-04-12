@@ -3,5 +3,7 @@
 {% block content %}
     <h1>{{ user.name }}</h1>
 
+    <p>User's fav quote: {{ user.fav_quote.sentence }}</p>
+
     <small>user's password: {{ user.password }}</small>
 {% endblock %}
