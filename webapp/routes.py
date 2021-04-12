@@ -143,7 +143,14 @@ def quotes_list():
 @app.route("/fav-quote/<int:id>")
 def fav_quote(quote_id):
     if flask_login.current_user.is_authenticated: # The user is logged in
-        pass
+        # Retrieve the quote
+        quote = models.Quote.query.get(quote_id)
+
+        # Set this quote as the current user's fav one
+        flask_login.current_user.fav_quote = quote
+
+        # Commit our changes
+        db.session.commit()
 
     return flask.redirect("/")
 
