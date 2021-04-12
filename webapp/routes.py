@@ -142,20 +142,19 @@ def quotes_list():
 
 @app.route("/populate")
 def populate():
+    import requests
+
     names = ["Rick", "Summer", "Jerry", "Morty", "Beth"]
-    quotes = [
-        "What, So Everyone’s Supposed To Sleep Every Single Night Now?" ,
-        "What People Call "Love" Is Just A Chemical Reaction...",
-        "...Meeting Them Head-On, Charging Into 'Em Like A Bull - That's How We Grow As People
-",
-    ]
+
+    quotes = requests.get("https://raw.githubusercontent.com/AndrewReitz/rick-and-morty-quotes-json/master/rick-and-morty-quotes.json").json()
 
     for name in names:
         user = models.User(name=name, password="chocolate")
         db.session.add(user)
 
-    for quote in quotes:
-        quote_obj = models.Quote(sentence=quote, author="Rick")
+    for q in quotes:
+        quote, author = q.split(" -")
+        quote_obj = models.Quote(sentence=quote, author=author)
         db.session.add(quote_obj)
 
     db.session.commit()
