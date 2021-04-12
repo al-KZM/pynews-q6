@@ -162,6 +162,8 @@ def populate():
 
     db.session.commit()
 
+    return "OK"
+
 
 
 
