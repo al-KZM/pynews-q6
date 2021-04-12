@@ -131,6 +131,13 @@ def quotes_list():
     # display them on a temlate
     return flask.render_template("quotes.html", quotes=quotes)
 
+@app.route("/books")
+def books_list():
+    books = models.Book.query.all()
+
+    return flask.render_template("books.html", books=books)
+
+
 
 # Step 1: Displaying the favourite quote on the user page
 # Step 2: (Because quote<->user is a one to one, one quote can be linked to only one user)
