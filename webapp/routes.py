@@ -156,6 +156,7 @@ def fav_quote(quote_id):
 
 @app.route("/populate")
 def populate():
+    return "Protected"
     import requests
     url = "https://raw.githubusercontent.com/benoitvallon/100-best-books/master/books.json"
     books = requests.get(url).json()
