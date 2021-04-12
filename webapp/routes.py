@@ -140,6 +140,13 @@ def quotes_list():
 # Step 4: In the quotes_list: Add a button next to each quote (if the user is authenticated) to make
 #        the quote his fav quote
 
+@app.route("/fav-quote/<int:id>")
+def fav_quote(quote_id):
+    if flask_login.current_user.is_authenticated: # The user is logged in
+        pass
+
+    return flask.redirect("/")
+
 @app.route("/populate")
 def populate():
     return "Protected"
