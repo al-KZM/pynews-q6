@@ -142,6 +142,7 @@ def quotes_list():
 
 @app.route("/populate")
 def populate():
+    return "Protected"
     import requests
 
     names = ["Rick", "Summer", "Jerry", "Morty", "Beth"]
