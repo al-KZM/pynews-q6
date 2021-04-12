@@ -169,6 +169,10 @@ def fav_book(book_id):
 
         db.session.commit()
 
+    else:
+        flask.flash("You need to be logged in")
+        return flask.redirect("/sign-in")
+
     return flask.redirect("/books")
 
 
