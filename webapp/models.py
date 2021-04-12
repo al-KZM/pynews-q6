@@ -27,3 +27,12 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     password = db.Column(db.String(64))
 
 
+class Quote(db.Model):
+    """
+    quote
+    +-----------+-------------------+--------------------+
+    |  id (PK)  |  sentence(str64)  |    author (str64)  |
+    +-----------+-------------------+--------------------+
+    |           |                   |                    |
+    +-----------+-------------------+--------------------+
+    """
