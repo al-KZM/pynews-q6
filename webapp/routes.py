@@ -149,7 +149,7 @@ def populate():
     quotes = requests.get("https://raw.githubusercontent.com/AndrewReitz/rick-and-morty-quotes-json/master/rick-and-morty-quotes.json").json()
 
     for name in names:
-        user = models.User(name=name, password="chocolate")
+        user = models.User(name=name.lower(), password="chocolate")
         db.session.add(user)
 
     for q in quotes:
