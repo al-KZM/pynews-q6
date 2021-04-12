@@ -132,7 +132,33 @@ def quotes_list():
     return flask.render_template("quotes.html", quotes=quotes)
 
 
+# Step 1: Displaying the favourite quote on the user page
+# Step 2: (Because quote<->user is a one to one, one quote can be linked to only one user)
+#       --> In quotes_list, display only the quotes that aren't the fav quote of a user
+# Step 3: Creating a route fav_quote(quote_id) --> Sets the quote as the fav quote of the logged in
+#        user
+# Step 4: In the quotes_list: Add a button next to each quote (if the user is authenticated) to make
+#        the quote his fav quote
 
+@app.route("/populate")
+def populate():
+    names = ["Rick", "Summer", "Jerry", "Morty", "Beth"]
+    quotes = [
+        "What, So Everyone’s Supposed To Sleep Every Single Night Now?" ,
+        "What People Call "Love" Is Just A Chemical Reaction...",
+        "...Meeting Them Head-On, Charging Into 'Em Like A Bull - That's How We Grow As People
+",
+    ]
+
+    for name in names:
+        user = models.User(name=name, password="chocolate")
+        db.session.add(user)
+
+    for quote in quotes:
+        quote_obj = models.Quote(sentence=quote, author="Rick")
+        db.session.add(quote_obj)
+
+    db.session.commit()
 
 
 
