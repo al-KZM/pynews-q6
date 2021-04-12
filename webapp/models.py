@@ -3,7 +3,7 @@ import flask_login
 
 from . import db, login_manager  # Database bridge created in __init__.py
 
-
+# First step:
 # Secondary table for the User<>Book ManyToMany relationship
 user2book = db.Table(
     "user2book", # name of the table
@@ -32,6 +32,8 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     password = db.Column(db.String(64))
 
     fav_quote = db.relationship('Quote', backref="user", uselist=False) # uselist=False <--> OneToOne relationship
+    # Step 2: relationship
+    fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
 
 class Quote(db.Model):
