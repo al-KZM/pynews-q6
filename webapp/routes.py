@@ -125,8 +125,11 @@ def profile_page(user_id):
 
 @app.route('/quotes')
 def quotes_list():
-    pass
+    # Retrieve the quotes
+    quotes = models.Quote.query.all()
 
+    # display them on a temlate
+    return flask.render_template("quotes.html", quotes=quotes)
 
 
 
