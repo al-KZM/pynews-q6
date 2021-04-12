@@ -137,8 +137,6 @@ def books_list():
 
     return flask.render_template("books.html", books=books)
 
-
-
 # Step 1: Displaying the favourite quote on the user page
 # Step 2: (Because quote<->user is a one to one, one quote can be linked to only one user)
 #       --> In quotes_list, display only the quotes that aren't the fav quote of a user
@@ -147,7 +145,7 @@ def books_list():
 # Step 4: In the quotes_list: Add a button next to each quote (if the user is authenticated) to make
 #        the quote his fav quote
 
-@app.route("/fav-quote/<int:id>")
+@app.route("/fav-quote/<int:quote_id>")
 def fav_quote(quote_id):
     if flask_login.current_user.is_authenticated: # The user is logged in
         # Retrieve the quote
@@ -160,6 +158,19 @@ def fav_quote(quote_id):
         db.session.commit()
 
     return flask.redirect("/")
+
+
+@app.route("/fav_book/<int:book_id>")
+def fav_book(book_id):
+    if flask_login.current_user.is_authenticated: # The user is logged in
+        book = models.Book.query.get(book_id) #book is an object of class Book
+
+        flask_login.current_user.fav_books.append(book) # fav_books is a list of <Book> objects
+
+        db.session.commit()
+
+    return flask.redirect("/")
+
 
 @app.route("/populate")
 def populate():
