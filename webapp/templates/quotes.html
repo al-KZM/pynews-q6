@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
         {% for quote in quotes %}
-            {% if quote.user is not None %}
+            {% if quote.user %}
                 <li> {{ quote.sentence }} ({{ quote.author }})</li>
             {% endif %}
         {% endfor %}
