@@ -165,9 +165,9 @@ def fav_book(book_id):
     if flask_login.current_user.is_authenticated: # The user is logged in
         book = models.Book.query.get(book_id) #book is an object of class Book
 
-        flask_login.current_user.fav_books.append(book) # fav_books is a list of <Book> objects
-
-        db.session.commit()
+        if book not in flask_login.current_user.fav_books:
+            flask_login.current_user.fav_books.append(book) # fav_books is a list of <Book> objects
+            db.session.commit()
 
     else:
         flask.flash("You need to be logged in")
