@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
+
+
 {% block content %}
     <h1>{{ user.name }}</h1>
 
-    <p>User's fav quote: {{ user.fav_quote.sentence }}</p>
+    <p>User's fav quote: {{ user.fav_quote.sentence | quote_format }}</p>
     <p>User's fav books:</p>
     <ul>
         {% for book in user.fav_books %}
