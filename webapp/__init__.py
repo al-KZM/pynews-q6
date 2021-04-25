@@ -6,7 +6,6 @@ import flask_login
 import os
 
 
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 db = flask_sqlalchemy.SQLAlchemy()              # database bridge
@@ -19,11 +18,6 @@ def create_app():
     from .main import main_blueprint
 
     app = flask.Flask(__name__)
-
-    app.config["SECRET_KEY"] = "my-very-secret-key"
-
-    # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postgres@localhost:5432/pynews"
-    app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
 
     db.init_app(app)
