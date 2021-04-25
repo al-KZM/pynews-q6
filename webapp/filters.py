@@ -24,6 +24,11 @@ def quote_format(quote):
     return quote
 
 
+@app.template_filter()
+def encrypt(s):
+    """
+    Encrypt a string "foostring" to "*********"
+    """
 
 
 
