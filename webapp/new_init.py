@@ -26,6 +26,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(db, app)
     login_manager.init_app(app)
+
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
     return app
