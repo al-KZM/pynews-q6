@@ -16,10 +16,11 @@ login_manager = flask_login.LoginManager()
 
 def create_app():
 
+    from .auth import auth_blueprint
+    from .main import main_blueprint
+
     app = flask.Flask(__name__)
 
-    from .auth import auth_blueprint
-    from . import routes, models, filters
 
     app.config["SECRET_KEY"] = "my-very-secret-key"
 
@@ -31,6 +32,7 @@ def create_app():
     migrate.init_app(db=db, app=app)
     login_manager.init_app(app)
 
+    app.register_blueprint(main_blueprint, url_prefix="/auth")
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
     return app
