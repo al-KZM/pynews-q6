@@ -43,7 +43,7 @@ def signin():
             user = models.User.query.filter_by(name=username).first()
 
             # Check the provided password against the user's one
-            if user is not None and user.check_password(passowrd):
+            if user is not None and user.check_password(password):
                 flask_login.login_user(user)
                 flask.flash("User logged in successfully !", "success")
             else:
