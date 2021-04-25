@@ -13,5 +13,5 @@
         {% endfor %}
     </ul>
 
-    <small>user's password: {{ user.password | encrypt }}</small>
+    <small>user's password: {{ user.password | encrypt("$") }}</small>
 {% endblock %}
