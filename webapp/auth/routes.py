@@ -1,5 +1,7 @@
+from . import auth_blueprint
+
 # The password needs to contain 6 to 12 characters
-@app.route("/sign-up", methods=["GET","POST"])
+@auth_blueprint.route("/sign-up", methods=["GET","POST"])
 def signup():
     """
     The function needs to add the user to the DB
@@ -22,7 +24,7 @@ def signup():
 
     return flask.render_template("signup.html", form=form)
 
-@app.route("/sign-in", methods=["GET", "POST"])
+@auth_blueprint.route("/sign-in", methods=["GET", "POST"])
 def signin():
     form = forms.SignInForm()
 
@@ -44,7 +46,7 @@ def signin():
 
     return flask.render_template("signin.html", form=form)
 
-@app.route("/sign-out")
+@auth_blueprint.route("/sign-out")
 def signout():
     flask_login.logout_user()
     return flask.redirect('/')
