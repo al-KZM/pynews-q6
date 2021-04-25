@@ -18,7 +18,10 @@ def signup():
             password = form.password.data
 
             # Create user
-            user = models.User(name=username, password=password)
+            user = models.User(name=username)
+
+            user.set_password(password)
+
             # Add it to the DB
             db.session.add(user)
             # Commit your changes
