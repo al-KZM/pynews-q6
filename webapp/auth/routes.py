@@ -1,4 +1,5 @@
 from . import auth_blueprint
+from . import forms
 
 # The password needs to contain 6 to 12 characters
 @auth_blueprint.route("/sign-up", methods=["GET","POST"])
