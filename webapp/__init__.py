@@ -13,12 +13,13 @@ migrate = flask_migrate.Migrate()               # Migrator
 login_manager = flask_login.LoginManager()
 
 
-def create_app():
+def create_app(conf):
     from .auth import auth_blueprint
     from .main import main_blueprint
 
     app = flask.Flask(__name__)
 
+    app.config.from_object(conf)
 
     db.init_app(app)
     migrate.init_app(db=db, app=app)
