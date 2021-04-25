@@ -32,6 +32,7 @@ def encrypt(s):
     :return: The encrypted string
     """
 
+    # Add as many stars as the letters in s
     encrypted = "*"*len(s)
 
     return encrypted
