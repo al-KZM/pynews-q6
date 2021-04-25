@@ -3,6 +3,13 @@ import flask_login
 from . import db, login_manager  # because it's in __init__, it can be retrieved by "from ."
 
 
+user2book = db.Table(
+    "user2book", # name of the table
+    db.Column("user_id", db.Integer(), db.ForeignKey("user.id"), primary_key=True),
+    db.Column("book_id", db.Integer(), db.ForeignKey("book.id"), primary_key=True),
+) # PK will be a combination of the two (1-2)
+
+
 @login_manager.user_loader
 def user_loader(user_id):
     return User.query.get(user_id)

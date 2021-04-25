@@ -5,13 +5,6 @@ from . import db, login_manager  # Database bridge created in __init__.py
 
 # First step:
 # Secondary table for the User<>Book ManyToMany relationship
-user2book = db.Table(
-    "user2book", # name of the table
-    db.Column("user_id", db.Integer(), db.ForeignKey("user.id"), primary_key=True),
-    db.Column("book_id", db.Integer(), db.ForeignKey("book.id"), primary_key=True),
-) # PK will be a combination of the two (1-2)
-
-
 class Quote(db.Model):
     """
     quote
