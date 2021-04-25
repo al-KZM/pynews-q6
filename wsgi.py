@@ -5,6 +5,7 @@ import config
 app = create_app(config.current_config)
 
 
+# This should be in create_app (you can create a function in a function.)
 @app.shell_context_processor
 def inject_variables_to_shell():
     """
