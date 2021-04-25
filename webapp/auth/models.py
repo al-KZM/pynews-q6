@@ -37,9 +37,15 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
     def check_password(self, pwd):
+        """
+        Check given password against the stored hash
+        """
         return security.check_password_hash(self.password, pwd)
 
     def set_password(self, pwd):
+        """
+        Storing the hash of the password into the database
+        """
         hashed = security.generate_password_hash(pwd)
         self.password = hashed
 
