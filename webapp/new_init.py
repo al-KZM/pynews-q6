@@ -9,6 +9,7 @@ db = flask_sqlalchemy.SQLAlchemy()              # database bridge
 migrate = flask_migrate.Migrate()               # Migrator
 login_manager = flask_login.LoginManager()
 
+
 def create_app():
 
     app = flask.Flask(__name__)
@@ -24,7 +25,7 @@ def create_app():
 
 
     db.init_app(app)
-    migrate.init_app(db, app)
+    migrate.init_app(db=db, app=app)
     login_manager.init_app(app)
 
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
