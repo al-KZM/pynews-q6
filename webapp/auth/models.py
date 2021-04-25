@@ -36,3 +36,10 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
 
+    def check_password(self, pwd):
+        pass
+
+    def set_password(self, pwd):
+        pass
+
+
