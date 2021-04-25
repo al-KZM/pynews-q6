@@ -25,17 +25,20 @@ def quote_format(quote):
 
 
 @app.template_filter()
-def encrypt(s):
-    """
-    Encrypt a string "foostring" to "*********"
-    :param s: The string to encrypt
-    :return: The encrypted string
-    """
+def encrypt(encryption_char="*"):
+    def filt(s):
+        """
+        Encrypt a string "foostring" to "*********"
+        :param s: The string to encrypt
+        :return: The encrypted string
+        """
 
-    # Add as many stars as the letters in s
-    encrypted = "*"*len(s)
+        # Add as many stars as the letters in s
+        encrypted = encryption_char*len(s)
 
-    return encrypted
+        return encrypted
+
+    return filt
 
 
 
