@@ -15,12 +15,10 @@ login_manager = flask_login.LoginManager()
 
 
 def create_app():
-
     from .auth import auth_blueprint
     from .main import main_blueprint
 
     app = flask.Flask(__name__)
-
 
     app.config["SECRET_KEY"] = "my-very-secret-key"
 
