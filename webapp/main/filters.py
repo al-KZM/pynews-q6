@@ -1,9 +1,9 @@
 # List of custom jinja filters
 # A filter is just a function that receives a string and return a string
 
-from . import app
+from . import main_blueprint
 
-@app.template_filter()
+@main_blueprint.template_filter()
 def quote_format(quote):
     """
     Format <quote> in our standard quote format:
@@ -24,7 +24,7 @@ def quote_format(quote):
     return quote
 
 
-@app.template_filter()
+@main_blueprint.template_filter()
 def encrypt(encryption_char="*"):
 
     # Generate a function that encrypts a given string with <encryption_char>
