@@ -13,3 +13,8 @@ class Config:
     BASEDIR = basedir
 
 
+class PostgresConfig(Config):
+
+    SQLALCHEMY_DATABASE_URI = "postgres://postgres:postgres@localhost:5432/pynews"
+
+
