@@ -23,5 +23,5 @@ configs = {
     "postgres": PostgresConfig,
 }
 
-CURRENT_CONFIG = configs["basic"] # Replace with input ?
+current_config = configs["basic"] # Replace with input ?
 
