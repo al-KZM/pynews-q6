@@ -1,9 +1,9 @@
 import flask, flask_login
 
-from . import app, db       # . is webapp/
+from . import main_blueprint, db       # . is webmain_blueprint/
 from . import forms, news_functions, models
 
-@app.route("/")
+@main_blueprint.route("/")
 def home():
     return "Hello world !"
 
@@ -16,12 +16,12 @@ def home():
 # 3) Create the template that displays the form
 # 4) Create the template that displays the articles
 
-@app.route("/article/query/<query>")
+@main_blueprint.route("/article/query/<query>")
 def query_article(query):
     articles = news_functions.get_news(query)
     return flask.render_template("articles.html", articles=articles)
 
-@app.route("/search-article", methods=["GET", "POST"])
+@main_blueprint.route("/search-article", methods=["GET", "POST"])
 def search_article():
     form = forms.QueryForm()
 
@@ -38,7 +38,7 @@ def search_article():
 
 
 # Create a route that displays a list of all the registered users
-@app.route("/users")
+@main_blueprint.route("/users")
 def users_list():
     # Retrieve users
     users = models.User.query.all()            # Return a list of users
@@ -53,7 +53,7 @@ def users_list():
 
 
 # Route: profile page
-@app.route('/user/<int:user_id>')
+@main_blueprint.route('/user/<int:user_id>')
 def profile_page(user_id):
 
     # Query methods:
@@ -67,7 +67,7 @@ def profile_page(user_id):
     return flask.render_template("user_profile.html", user=user)
 
 
-@app.route('/quotes')
+@main_blueprint.route('/quotes')
 def quotes_list():
     # Retrieve the quotes
     quotes = models.Quote.query.all()
@@ -75,7 +75,7 @@ def quotes_list():
     # display them on a temlate
     return flask.render_template("quotes.html", quotes=quotes)
 
-@app.route("/books")
+@main_blueprint.route("/books")
 def books_list():
     books = models.Book.query.all()
 
@@ -89,7 +89,7 @@ def books_list():
 # Step 4: In the quotes_list: Add a button next to each quote (if the user is authenticated) to make
 #        the quote his fav quote
 
-@app.route("/fav-quote/<int:quote_id>")
+@main_blueprint.route("/fav-quote/<int:quote_id>")
 def fav_quote(quote_id):
     if flask_login.current_user.is_authenticated: # The user is logged in
         # Retrieve the quote
@@ -104,13 +104,13 @@ def fav_quote(quote_id):
     return flask.redirect("/quotes")
 
 
-@app.route("/fav_book/<int:book_id>")
+@main_blueprint.route("/fav_book/<int:book_id>")
 def fav_book(book_id):
     if flask_login.current_user.is_authenticated: # The user is logged in
         book = models.Book.query.get(book_id) #book is an object of class Book
 
         if book not in flask_login.current_user.fav_books:
-            flask_login.current_user.fav_books.append(book) # fav_books is a list of <Book> objects
+            flask_login.current_user.fav_books.main_blueprintend(book) # fav_books is a list of <Book> objects
             db.session.commit()
 
     else:
@@ -120,7 +120,7 @@ def fav_book(book_id):
     return flask.redirect("/books")
 
 
-@app.route("/populate")
+@main_blueprint.route("/populate")
 def populate():
     return "Protected"
     import requests
