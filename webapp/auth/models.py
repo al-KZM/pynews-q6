@@ -1,4 +1,5 @@
 import flask_login
+from werkzeug import security
 
 from . import db, login_manager  # because it's in __init__, it can be retrieved by "from ."
 
@@ -35,11 +36,11 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     # List of fav books (o2m)
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
-
     def check_password(self, pwd):
-        pass
+        return security.check_password_hash(self.password, pwd)
 
     def set_password(self, pwd):
-        pass
+        hashed = security.generate_password_hash(pwd)
+        self.password = hashed
 
 
