@@ -1,3 +1,5 @@
+import flask
+
 from . import auth_blueprint
 from . import forms
 
