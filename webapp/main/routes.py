@@ -28,7 +28,7 @@ def search_article():
     # case 1: Post request --> The user is sending data
     if flask.request.method == "POST":
         if form.validate_on_submit(): # Check all the validators
-            url = flask.url_for("query_article", query=form.query.data)
+            url = flask.url_for("main.query_article", query=form.query.data)
             # url --> /article/query/rick
             return flask.redirect(url)
 
