@@ -3,7 +3,7 @@
 
 from . import main_blueprint
 
-@main_blueprint.template_filter()
+@main_blueprint.app_template_filter()
 def quote_format(quote):
     """
     Format <quote> in our standard quote format:
@@ -24,7 +24,7 @@ def quote_format(quote):
     return quote
 
 
-@main_blueprint.template_filter()
+@main_blueprint.app_template_filter()
 def encrypt(encryption_char="*"):
 
     # Generate a function that encrypts a given string with <encryption_char>
