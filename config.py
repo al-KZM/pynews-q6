@@ -22,3 +22,6 @@ configs = {
     "basic": Config,
     "postgres": PostgresConfig,
 }
+
+CURRENT_CONFIG = "basic"
+
