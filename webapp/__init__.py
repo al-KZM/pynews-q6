@@ -25,6 +25,8 @@ login_manager = flask_login.LoginManager(app)
 
 ################ END OF THE APP CONFIG
 
-
+from .auth import auth_blueprint
 from . import routes, models, filters
+
+app.register_blueprint(auth_blueprint)
 
