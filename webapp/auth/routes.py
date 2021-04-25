@@ -1,6 +1,6 @@
-import flask
+import flask, flask_login
 
-from . import auth_blueprint
+from . import auth_blueprint, db
 from . import forms, models
 
 # The password needs to contain 6 to 12 characters
