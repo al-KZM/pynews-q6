@@ -23,5 +23,8 @@ db = flask_sqlalchemy.SQLAlchemy(app)    # database bridge
 migrate = flask_migrate.Migrate(app, db) # Migrator
 login_manager = flask_login.LoginManager(app)
 
+################ END OF THE APP CONFIG
+
+
 from . import routes, models, filters
 
