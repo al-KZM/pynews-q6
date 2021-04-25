@@ -1,3 +1,5 @@
+from . import db  # because it's in __init__, it can be retrieved by "from ."
+
 
 @login_manager.user_loader
 def user_loader(user_id):
