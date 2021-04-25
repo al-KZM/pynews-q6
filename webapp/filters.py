@@ -26,6 +26,7 @@ def quote_format(quote):
 
 @app.template_filter()
 def encrypt(encryption_char="*"):
+
     # Generate a function that encrypts a given string with <encryption_char>
     def filt(s):
         """
