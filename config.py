@@ -25,3 +25,4 @@ configs = {
 
 current_config = configs["basic"] # Replace with input ?
 
+
