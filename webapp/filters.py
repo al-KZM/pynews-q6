@@ -28,7 +28,13 @@ def quote_format(quote):
 def encrypt(s):
     """
     Encrypt a string "foostring" to "*********"
+    :param s: The string to encrypt
+    :return: The encrypted string
     """
+
+    encrypted = "*"*len(s)
+
+    return encrypted
 
 
 
