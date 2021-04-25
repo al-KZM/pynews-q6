@@ -1,4 +1,4 @@
-from . import db  # because it's in __init__, it can be retrieved by "from ."
+from . import db, login_manager  # because it's in __init__, it can be retrieved by "from ."
 
 
 @login_manager.user_loader
