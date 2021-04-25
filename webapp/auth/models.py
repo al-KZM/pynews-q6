@@ -1,3 +1,5 @@
+import flask_login
+
 from . import db, login_manager  # because it's in __init__, it can be retrieved by "from ."
 
 
