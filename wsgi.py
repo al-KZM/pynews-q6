@@ -18,7 +18,8 @@ def inject_variables_to_shell():
         "User": User,
         "Quote": Quote,
         "Book": Book,
-        "db": db
+        "db": db,
+        "dev_name": "Eyal",
     }
 
 
