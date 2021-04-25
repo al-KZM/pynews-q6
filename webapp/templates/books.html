@@ -8,7 +8,7 @@
 
             {% if current_user.is_authenticated %}
                 {% if book not in current_user.fav_books %}
-                <a href="{{ url_for('fav_book', book_id=book.id) }}">(Add to favourite)</a>
+                <a href="{{ url_for('main.fav_book', book_id=book.id) }}">(Add to favourite)</a>
                 {% endif %}
             {% endif %}
             </li>
