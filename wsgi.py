@@ -5,7 +5,7 @@ import config
 app = create_app(config.current_config)
 
 
-
+@app.shell_context_processor
 def inject_variables_to_shell():
     """
     Return a dictionary of variables to inject ({variable_name: variable_value})
