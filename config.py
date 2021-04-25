@@ -1,8 +1,9 @@
 
-# https://flask.palletsprojects.com/en/1.1.x/config/
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+
+# https://flask.palletsprojects.com/en/1.1.x/config/
 class Config:
 
     DEBUG = True
