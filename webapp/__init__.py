@@ -28,5 +28,6 @@ login_manager = flask_login.LoginManager(app)
 from .auth import auth_blueprint
 from . import routes, models, filters
 
-app.register_blueprint(auth_blueprint)
+app.register_blueprint(auth_blueprint, url_prefix="/auth")
+
 
