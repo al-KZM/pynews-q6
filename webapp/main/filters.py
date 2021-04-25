@@ -3,7 +3,7 @@
 
 from . import main_blueprint
 
-@main_blueprint.app_template_filter()
+@main_blueprint.app_template_filter() # Not @main_blueprint.template_filter()
 def quote_format(quote):
     """
     Format <quote> in our standard quote format:
