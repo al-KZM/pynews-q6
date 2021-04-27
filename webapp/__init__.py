@@ -1,7 +1,6 @@
 import flask
-import flask_sqlalchemy
-import flask_migrate
-import flask_login
+import flask_login, flask_mail, flask_sqlalchemy, flask_migrate
+
 
 import os
 
@@ -10,6 +9,7 @@ import os
 db = flask_sqlalchemy.SQLAlchemy()              # database bridge
 migrate = flask_migrate.Migrate()               # Migrator
 login_manager = flask_login.LoginManager()
+mail_manager = flask_mail.Mail()
 
 
 def create_app(conf):
@@ -23,6 +23,7 @@ def create_app(conf):
     db.init_app(app)
     migrate.init_app(db=db, app=app)
     login_manager.init_app(app)
+    mail_manager.init_app(app)
 
     app.register_blueprint(main_blueprint)
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
