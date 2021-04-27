@@ -15,4 +15,9 @@ class SignInForm(flask_wtf.FlaskForm):
     submit = wtforms.SubmitField("Sign in")
 
 
+class ResetPasswordForm(flask_wtf.FlaskForm):
+
+    password = wtforms.PasswordField("Password: ", validators=[vld.Length(6, 12)])
+
+    submit = wtforms.SubmitField("Sign in")
 
