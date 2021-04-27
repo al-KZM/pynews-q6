@@ -67,7 +67,8 @@ def reset_password(token):
         payload = jwt.decode(token, flask.current_app.config["SECRET_KEY"])
         user_id = payload["user_id"]
         user = models.User.get(user_id)
-    except:
+    except Exception as e:
+        print(str(e))
         flask.flash("Something went wrong.")
         return flask.redirect('/')
 
