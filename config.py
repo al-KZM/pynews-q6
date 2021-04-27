@@ -25,6 +25,10 @@ class Config:
     MAIL_USERNAME = 'elmozarello@gmail.com'
     MAIL_PASSWORD = 'imnotputtingithere'
 
+    # Use an env variable:
+    # In your terminal:
+    # OSX: $ export MAIL_PASSWORD='mypassword' (To make it permanent, put this line in ~/.bash_profile)
+    # WIN: Use cmder
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 
