@@ -6,8 +6,7 @@ import flask_login
 import os
 
 
-
-
+# Init all the managers variables
 db = flask_sqlalchemy.SQLAlchemy()              # database bridge
 migrate = flask_migrate.Migrate()               # Migrator
 login_manager = flask_login.LoginManager()
