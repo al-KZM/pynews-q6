@@ -6,6 +6,7 @@ class SignUpForm(flask_wtf.FlaskForm):
     username = wtforms.StringField("Username: ")
     mail     = wtforms.StringField("Mail: ")
     password = wtforms.PasswordField("Password: ", validators=[vld.Length(6, 12)])
+    profile_pic = wtforms.FileField("Profile picture:")
 
     submit = wtforms.SubmitField("Sign up")
 
