@@ -58,10 +58,12 @@ def signout():
     flask_login.logout_user()
     return flask.redirect('/')
 
-@auth_blueprint.route("/reset-password/<int:user_id>")
-def reset_password(user_id):
+@auth_blueprint.route("/reset-password/<token>")
+def reset_password(token):
     form = forms.ResetPasswordForm()
 
+    payload = jwt.decode(token, app.config["SECRET_KEY"])
+    user_id = payload["user_id"]
     user = models.User.get(user_id)
 
     if not user:
@@ -93,11 +95,17 @@ def forgot_password():
             if user:
                 # User is not none
 
+                # Generate an encrypted token
+                payload = {
+                    "user_id": user.id,
+                }
+                token = jwt.encode(payload, app.config["SECRET_KEY"])
+
                 # Without _external=True:
                 # /reset-password/8
                 # With _external=True:
                 # 127.0.0.1:5000/reset-password/8 (or www.pynews.com/reset-password/8)
-                reset_link = flask.url_for('reset_password', user_id=user.id, _external=True)
+                reset_link = flask.url_for('reset_password', token=token, _external=True)
                 mail_functions.send_mail(
                     title="Password Reset",
                     body=f"Hey, to reset your email, follow this link: {reset_link}",
