@@ -104,6 +104,8 @@ def forgot_password():
                     recipients=user.mail,
                 )
 
+                flask.flash("A reset link has been sent to your mail.")
+
 
             else:
                 flask.flash(f"User {username} doesn't exist")
