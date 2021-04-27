@@ -10,4 +10,7 @@ def send_mail(sender, title, body, recipient):
         recipients=[recipient],
     )
 
+    # Send it using mail_manager.send
+    mail_manager.send(msg)
+
 
