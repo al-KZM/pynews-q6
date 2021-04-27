@@ -66,7 +66,7 @@ def reset_password(token):
     try:
         payload = jwt.decode(token, flask.current_app.config["SECRET_KEY"], algorithms=['HS256'])
         user_id = payload["user_id"]
-        user = models.User.get(user_id)
+        user = models.User.query.get(user_id)
     except Exception as e:
         print(str(e))
         flask.flash("Something went wrong.")
@@ -80,7 +80,7 @@ def reset_password(token):
 
             return flask.redirect('/')
 
-    return flask.render_template("reset_password.html")
+    return flask.render_template("reset_password.html", form=form)
 
 
 @auth_blueprint.route("/forgot-password", methods=["GET","POST"])
