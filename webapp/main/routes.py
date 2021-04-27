@@ -7,8 +7,8 @@ from . import forms, news_functions, mail_functions, models
 @main_blueprint.route("/test")
 def test():
     flask.flash("Testing mail sending !")
-    mail_functions.send_mail("elmozarello@gmail.com",
-                             "Hello world",
+
+    mail_functions.send_mail("Hello world",
                              "This is a test !",
                              "eyal@chocron.eu"
                             )
