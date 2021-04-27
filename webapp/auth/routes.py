@@ -62,12 +62,12 @@ def signout():
 def reset_password(token):
     form = forms.ResetPasswordForm()
 
-    payload = jwt.decode(token, app.config["SECRET_KEY"])
-    user_id = payload["user_id"]
-    user = models.User.get(user_id)
-
-    if not user:
-        flask.flash("User doesn't exist")
+    try:
+        payload = jwt.decode(token, app.config["SECRET_KEY"])
+        user_id = payload["user_id"]
+        user = models.User.get(user_id)
+    except:
+        flask.flash("Something went wrong.")
         return flask.redirect('/')
 
     if flask.request.method == "POST":
