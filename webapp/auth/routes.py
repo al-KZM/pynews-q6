@@ -1,4 +1,5 @@
 import flask, flask_login
+import jwt
 
 from . import auth_blueprint, db
 from . import forms, models, mail_functions
