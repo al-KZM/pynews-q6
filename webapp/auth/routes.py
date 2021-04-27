@@ -59,7 +59,7 @@ def signout():
     flask_login.logout_user()
     return flask.redirect('/')
 
-@auth_blueprint.route("/reset-password/<token>")
+@auth_blueprint.route("/reset-password/<token>", methods=["GET","POST"])
 def reset_password(token):
     form = forms.ResetPasswordForm()
 
@@ -82,7 +82,7 @@ def reset_password(token):
     return flask.render_template("reset_password.html")
 
 
-@auth_blueprint.route("/forgot-password")
+@auth_blueprint.route("/forgot-password", methods=["GET","POST"])
 def forgot_password():
 
     form = forms.ForgotPasswordform()
