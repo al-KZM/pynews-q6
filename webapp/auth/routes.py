@@ -82,5 +82,13 @@ def reset_password(user_id):
 @auth_blueprint.route("/forgot-password")
 def forgot_password():
 
+    form = forms.ForgotPasswordform()
+
+    if flask.request.method == "POST":
+        if form.validate_on_submit():
+            username = form.username.data
+
+            # Fetch the user with this username
+            user = models.User.query.filter_by(username=username)
 
     return flask.render_template("")
