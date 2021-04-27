@@ -64,7 +64,7 @@ def reset_password(token):
     form = forms.ResetPasswordForm()
 
     try:
-        payload = jwt.decode(token, flask.current_app.config["SECRET_KEY"], algorithms=['hs256'])
+        payload = jwt.decode(token, flask.current_app.config["SECRET_KEY"], algorithms=['HS256'])
         user_id = payload["user_id"]
         user = models.User.get(user_id)
     except Exception as e:
