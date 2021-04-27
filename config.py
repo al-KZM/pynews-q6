@@ -12,6 +12,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 
     BASEDIR = basedir
+    UPLOADS_DIR = os.path.join(basedir, 'webapp/uploads')
 
 
     # MAIL CONFIG
