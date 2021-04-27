@@ -4,6 +4,7 @@ from wtforms import validators as vld
 
 class SignUpForm(flask_wtf.FlaskForm):
     username = wtforms.StringField("Username: ")
+    mail     = wtforms.StringField("Mail: ")
     password = wtforms.PasswordField("Password: ", validators=[vld.Length(6, 12)])
 
     submit = wtforms.SubmitField("Sign up")
