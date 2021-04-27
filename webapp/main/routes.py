@@ -11,7 +11,7 @@ def test():
     mail_functions.send_mail("Hello world",
                              "This is a test !",
                              "eyal@chocron.eu",
-                             html="<h1>Hello world !</h1>"
+                             html=flask.render_template('mail.html', body="Hello World !"),
                             )
 
     return flask.redirect('/')
