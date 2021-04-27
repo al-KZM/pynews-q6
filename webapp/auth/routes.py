@@ -1,5 +1,5 @@
 import flask, flask_login
-import jwt
+import jwt      # Not pyjwt, altough it's the name of the package you need to install
 
 from . import auth_blueprint, db
 from . import forms, models, mail_functions
