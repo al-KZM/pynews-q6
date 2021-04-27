@@ -8,9 +8,9 @@ from . import forms, news_functions, mail_functions, models
 def test():
     flask.flash("Testing mail sending !")
 
-    mail_functions.send_mail("Hello world",
-                             "This is a test !",
-                             "eyal@chocron.eu",
+    mail_functions.send_mail(title="Hello world",
+                             body="This is a test !",
+                             recipients="eyal@chocron.eu",
                              html=flask.render_template('mail.html', body="Hello World !")
                             )
 
