@@ -120,4 +120,4 @@ def forgot_password():
                 flask.flash(f"User {username} doesn't exist")
 
 
-    return flask.render_template("")
+    return flask.render_template("forgot_password.html", form=form)
