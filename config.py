@@ -25,6 +25,8 @@ class Config:
     MAIL_USERNAME = 'elmozarello@gmail.com'
     MAIL_PASSWORD = 'imnotputtingithere'
 
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+
 
 
 
