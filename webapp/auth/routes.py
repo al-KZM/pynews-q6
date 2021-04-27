@@ -63,7 +63,7 @@ def reset_password(token):
     form = forms.ResetPasswordForm()
 
     try:
-        payload = jwt.decode(token, app.config["SECRET_KEY"])
+        payload = jwt.decode(token, flask.current_app.config["SECRET_KEY"])
         user_id = payload["user_id"]
         user = models.User.get(user_id)
     except:
@@ -99,7 +99,7 @@ def forgot_password():
                 payload = {
                     "user_id": user.id,
                 }
-                token = jwt.encode(payload, app.config["SECRET_KEY"])
+                token = jwt.encode(payload, flask.current_app.config["SECRET_KEY"])
 
                 # Without _external=True:
                 # /reset-password/8
