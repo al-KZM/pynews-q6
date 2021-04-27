@@ -1,7 +1,7 @@
 import flask, flask_login
 
 from . import auth_blueprint, db
-from . import forms, models
+from . import forms, models, mail_functions
 
 # The password needs to contain 6 to 12 characters
 @auth_blueprint.route("/sign-up", methods=["GET","POST"])
@@ -96,7 +96,7 @@ def forgot_password():
                 # Without _external=True:
                 # /reset-password/8
                 # With _external=True:
-                # www.pynews.com/reset-password/8
+                # 127.0.0.1:5000/reset-password/8 (or www.pynews.com/reset-password/8)
                 reset_link = flask.url_for('reset_password', user_id=user.id, _external=True)
                 mail_functions.send_mail(
                     title="Password Reset",
