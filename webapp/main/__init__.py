@@ -8,7 +8,7 @@
 ##############################################
 import flask
 
-from .. import db, login_manager
+from .. import db, login_manager, mail_manager
 
 main_blueprint = flask.Blueprint("main", __name__)
 
