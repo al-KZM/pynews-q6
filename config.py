@@ -14,6 +14,16 @@ class Config:
     BASEDIR = basedir
 
 
+    # MAIL CONFIG
+
+    MAIL_SERVER  = "smtp.gmail.com"
+    MAIL_PORT    = 587
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
+
+
+
+
 class PostgresConfig(Config):
 
     SQLALCHEMY_DATABASE_URI = "postgres://postgres:postgres@localhost:5432/pynews"
