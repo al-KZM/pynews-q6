@@ -1,7 +1,7 @@
 from . import mail_manager
 import flask_mail
 
-def send_mail(title, body, recipients):
+def send_mail(title, body, recipients, html=""):
 
     if type(recipients) == str:
         recipients = [recipients]
@@ -10,10 +10,12 @@ def send_mail(title, body, recipients):
     msg = flask_mail.Message(
         subject=title,
         body=body,
+        html=html,
         recipients=recipients,
     )
 
     # Send it using mail_manager.send
     mail_manager.send(msg)
+
 
 
