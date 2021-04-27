@@ -23,6 +23,8 @@ class Config:
     MAIL_USE_SSL = False
 
     MAIL_USERNAME       = 'elmozarello@gmail.com'
+    MAIL_PASSWORD       = 'imnotputtingithere'
+    MAIL_DEFAULT_SENDER = 'elmozarello@gmail.com'
 
     # Use an env variable:
     # In your terminal:
