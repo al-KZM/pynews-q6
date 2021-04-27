@@ -16,9 +16,10 @@ def signup():
         if form.validate_on_submit():
             username = form.username.data
             password = form.password.data
+            mail     = form.mail.data
 
             # Create user
-            user = models.User(name=username)
+            user = models.User(name=username, mail=mail)
 
             user.set_password(password)
 
@@ -76,3 +77,10 @@ def reset_password(user_id):
             return flask.redirect('/')
 
     return flask.render_template("reset_password.html")
+
+
+@auth_blueprint.route("/forgot-password")
+def forgot_password():
+
+
+    return flask.render_template("")
