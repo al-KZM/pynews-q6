@@ -57,4 +57,18 @@ def signout():
     flask_login.logout_user()
     return flask.redirect('/')
 
+@auth_blueprint.route("/reset-password/<int:user_id>")
+def reset_password(user_id):
+    form = forms.ResetPasswordForm()
 
+    user = models.User.get(user_id)
+
+    if not user:
+        flask.flash("User doesn't exist")
+        return flask.redirect('/')
+
+    if flask.request.method == "POST":
+        if form.validate_on_submit():
+
+
+    return flask.render_template("")
