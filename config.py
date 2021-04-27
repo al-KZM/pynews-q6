@@ -16,10 +16,13 @@ class Config:
 
     # MAIL CONFIG
 
-    MAIL_SERVER  = "smtp.gmail.com"
-    MAIL_PORT    = 587
+    # pip install flask-mail
+    MAIL_SERVER  = "smtp.gmail.com" # mail.yahoo.fr
+    MAIL_PORT    = 587 # 465
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
+
+
 
 
 
