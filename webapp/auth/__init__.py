@@ -1,5 +1,6 @@
 import flask
 from .. import db, login_manager
+from .. import mail_functions
 
 auth_blueprint = flask.Blueprint('auth', __name__)
 

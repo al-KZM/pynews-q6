@@ -9,6 +9,7 @@
 import flask
 
 from .. import db, login_manager, mail_manager
+from .. import mail_functions
 
 main_blueprint = flask.Blueprint("main", __name__)
 
