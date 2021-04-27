@@ -101,7 +101,7 @@ def forgot_password():
                 payload = {
                     "user_id": user.id,
                 }
-                token = jwt.encode(payload, flask.current_app.config["SECRET_KEY"])
+                token = jwt.encode(payload, flask.current_app.config["SECRET_KEY"], algorithm="HS256")
 
                 # Without _external=True:
                 # /reset-password/8
