@@ -10,7 +10,8 @@ def test():
 
     mail_functions.send_mail("Hello world",
                              "This is a test !",
-                             "eyal@chocron.eu"
+                             "eyal@chocron.eu",
+                             html="<h1>Hello world !</h1>"
                             )
 
     return flask.redirect('/')
