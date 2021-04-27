@@ -71,6 +71,8 @@ def reset_password(user_id):
         if form.validate_on_submit():
             user.set_password(form.password.data)
 
+            flask.flash("Password has been reset successfully")
+
             return flask.redirect('/')
 
     return flask.render_template("reset_password.html")
