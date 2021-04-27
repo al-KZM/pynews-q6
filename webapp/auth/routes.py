@@ -89,6 +89,24 @@ def forgot_password():
             username = form.username.data
 
             # Fetch the user with this username
-            user = models.User.query.filter_by(username=username)
+            user = models.User.query.filter_by(name=username).first()
+            if user:
+                # User is not none
+
+                # Without _external=True:
+                # /reset-password/8
+                # With _external=True:
+                # www.pynews.com/reset-password/8
+                reset_link = flask.url_for('reset_password', user_id=user.id, _external=True)
+                mail_functions.send_mail(
+                    title="Password Reset",
+                    body=f"Hey, to reset your email, follow this link: {reset_link}",
+                    recipients=user.mail,
+                )
+
+
+            else:
+                flask.flash(f"User {username} doesn't exist")
+
 
     return flask.render_template("")
