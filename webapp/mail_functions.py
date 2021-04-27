@@ -8,7 +8,6 @@ def send_mail(title, body, recipients, html=""):
 
     # Create a message object
     msg = flask_mail.Message(
-        sender="elmozarello@gmail.com",
         subject=title,
         body=body,
         html=html,
