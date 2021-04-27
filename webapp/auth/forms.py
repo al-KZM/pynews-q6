@@ -21,3 +21,12 @@ class ResetPasswordForm(flask_wtf.FlaskForm):
 
     submit = wtforms.SubmitField("Reset password")
 
+
+class ForgotPasswordform(flask_wtf.FlaskForm):
+
+    username = wtforms.StringField("Username: ")
+
+    submit = wtforms.SubmitField("Reset password")
+
+
+
