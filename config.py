@@ -22,6 +22,9 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
 
+    MAIL_USERNAME = 'elmozarello@gmail.com'
+    MAIL_PASSWORD = 'imnotputtingithere'
+
 
 
 
