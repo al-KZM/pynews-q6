@@ -29,6 +29,7 @@ class Config:
     # In your terminal:
     # OSX: $ export MAIL_PASSWORD='mypassword' (To make it permanent, put this line in ~/.bash_profile)
     # WIN: Use cmder
+
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 
