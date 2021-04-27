@@ -106,7 +106,7 @@ def forgot_password():
                 # /reset-password/8
                 # With _external=True:
                 # 127.0.0.1:5000/reset-password/8 (or www.pynews.com/reset-password/8)
-                reset_link = flask.url_for('reset_password', token=token, _external=True)
+                reset_link = flask.url_for('auth.reset_password', token=token, _external=True)
                 mail_functions.send_mail(
                     title="Password Reset",
                     body=f"Hey, to reset your email, follow this link: {reset_link}",
