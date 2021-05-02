@@ -36,9 +36,16 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 
+class DevConfig(Config):
+    """
+    Development config
+    """
+    pass
 
-
-class PostgresConfig(Config):
+class ProdConfig(Config):
+    """
+    Production config
+    """
 
     SQLALCHEMY_DATABASE_URI = "postgres://postgres:postgres@localhost:5432/pynews"
 
