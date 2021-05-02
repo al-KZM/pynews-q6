@@ -1,7 +1,6 @@
 from webapp import create_app
 import config
 
-SYNTAX ERROR!
 app = create_app(config.current_config)
 
 
