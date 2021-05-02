@@ -21,6 +21,7 @@ def test():
 def set_language(lang):
     flask.session["language"] = lang
     flask_babel.refresh()
+    return flask.redirect('/')
 
 @main_blueprint.route("/")
 def home():
