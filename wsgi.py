@@ -25,8 +25,7 @@ def inject_variables_to_shell():
 
 
 
-if __name__ == "__main__": # --> if we run this specific file (if it's not imported by another one)
+if __name__ == "__main__":
     app.run(port=5000, debug=True)
-
 
 
