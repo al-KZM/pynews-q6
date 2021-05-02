@@ -57,7 +57,6 @@ class ProdConfig(Config):
 
 
 
-
 configs = {
     "dev": DevConfig,
     "prod": ProdConfig,
@@ -67,5 +66,7 @@ if os.environ.get("FLASK_ENV") == "dev":
     current_config = configs["dev"] # Replace with input ?
 else:
     current_config = configs["prod"] # Replace with input ?
+
+
 
 
