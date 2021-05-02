@@ -50,5 +50,21 @@
     {% endblock %}
 </div> <!-- End of container -->
 
+<footer>
+    <small>
+        Switch language:
+    </small>
+        <ul>
+            {% for lang in ["fr", "en", "sp", "he"] %}
+            <li>
+                    <small>
+                        <a href="{{ url_for('set_language', lang=lang) }}"> {{ lang }}</a>
+                    </small>
+            </li>
+
+            {% endfor %}
+        </ul>
+</footer>
+
 </body>
 </html>
