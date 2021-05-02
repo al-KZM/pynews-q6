@@ -59,10 +59,10 @@ class ProdConfig(Config):
 
 
 configs = {
-    "basic": Config,
-    "postgres": PostgresConfig,
+    "dev": DevConfig,
+    "prod": ProdConfig,
 }
 
-current_config = configs["basic"] # Replace with input ?
+current_config = configs["dev"] # Replace with input ?
 
 
