@@ -35,6 +35,10 @@ def create_app(conf):
 
 @babel.localeselector
 def get_locale():
+    lang = flask.session.get("language")
+    if lang is not None:
+        return lang
+
     # if a user is logged in, use the locale from the user settings
     user = getattr(flask.g, 'user', None)
     if user is not None:
