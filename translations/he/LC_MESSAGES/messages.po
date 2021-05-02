@@ -20,5 +20,5 @@ msgstr ""
 
 #: webapp/templates/base.html:25
 msgid "Home"
-msgstr ""
+msgstr "בית"
 
