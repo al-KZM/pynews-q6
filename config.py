@@ -63,6 +63,9 @@ configs = {
     "prod": ProdConfig,
 }
 
-current_config = configs["dev"] # Replace with input ?
+if os.environ.get("FLASK_ENV") == "dev":
+    current_config = configs["dev"] # Replace with input ?
+else:
+    current_config = configs["prod"] # Replace with input ?
 
 
