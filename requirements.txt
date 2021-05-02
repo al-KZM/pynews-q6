@@ -12,3 +12,4 @@ Flask_WTF==0.14.3
 PyJWT==2.1.0
 gunicorn==20.1.0
 psycopg2==2.8.6
+flask-babel==2.0.0
