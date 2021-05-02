@@ -17,6 +17,11 @@ def test():
     return flask.redirect('/')
 
 
+@main_blueprint.route("/set-language/<lang>")
+def set_language(lang):
+    flask_babel.force_locale(lang)
+    flask_babel.refresh()
+
 @main_blueprint.route("/")
 def home():
     return "Hello world !"
