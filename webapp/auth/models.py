@@ -108,4 +108,5 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
         hashed = security.generate_password_hash(pwd)
         self.password = hashed
 
+        self.save()
 
