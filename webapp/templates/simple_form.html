@@ -3,7 +3,7 @@
 
     {% for field_name, field in form._field.keys() %}
     <p>
-        {{ form._.label }}
+        {{ field.label }}
         {{ field() }}
     </p>
     {% endfor %}
