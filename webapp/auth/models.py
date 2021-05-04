@@ -24,7 +24,35 @@ def user_loader(user_id):
 
 class User(db.Model, flask_login.UserMixin): # db.Model is required if you want to create an SQL model
     """
+    A class representing a user.
 
+    ...
+
+    Attributes
+    ----------
+    id : int
+        Automatically incremented unique id
+    name : str
+        Name of the user
+    password : str
+        Hash of the user's password
+    mail : str
+        Mail address of the user
+    encrypted_credit_card : str
+        Encrypted version of the user's credit card
+    credit_card : str
+        (Hybrid property) Decrypted version of the user's credit card
+    fav_quote : Quote
+        User's favourite quote
+    fav_books : List of Book objects
+        User's favourite books
+
+    Methods
+    ----------
+    check_password(pwd):
+        Return if <pwd> is the right password for this user
+    set_password(pwd):
+        Hash the password and set it as this user's password
     """
 
     id = db.Column(db.Integer(), primary_key=True)
@@ -34,13 +62,14 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
     mail = db.Column(db.String(254), nullable=True)
 
+    encrypted_credit_card = db.Column(db.String(254)) # my_user.credit_card --> won't give the credit card
+
     # Favorite quote (o2o)
     fav_quote = db.relationship('Quote', backref="user", uselist=False) # uselist=False <--> OneToOne relationship
 
     # List of fav books (o2m)
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
-    encrypted_credit_card = db.Column(db.String(254)) # my_user.credit_card --> won't give the credit card
 
     @hybrid_property  # from sqlalchemy.ext.hybrid import hybrid_property
     def credit_card(self):
