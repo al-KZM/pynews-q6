@@ -1,6 +1,6 @@
 
 
-<form action="" method="POST">
+<form action="" method="POST" {% for name, value in additional_params.items() %} {{ name }}="{{ value }}" {% endfor %}>
     {{ form.hidden_tag() }}
 
     {% for field_name, field in form._field.keys() %}
