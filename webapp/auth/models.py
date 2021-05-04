@@ -56,18 +56,11 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     """
 
     id = db.Column(db.Integer(), primary_key=True)
-
     name = db.Column(db.String(64))
     password = db.Column(db.String(64))
-
     mail = db.Column(db.String(254), nullable=True)
-
-    encrypted_credit_card = db.Column(db.String(254)) # my_user.credit_card --> won't give the credit card
-
-    # Favorite quote (o2o)
-    fav_quote = db.relationship('Quote', backref="user", uselist=False) # uselist=False <--> OneToOne relationship
-
-    # List of fav books (o2m)
+    encrypted_credit_card = db.Column(db.String(254))
+    fav_quote = db.relationship('Quote', backref="user", uselist=False)
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
 
