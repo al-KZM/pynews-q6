@@ -127,16 +127,22 @@ def fav_quote(quote_id):
 @main_blueprint.route("/fav_book/<int:book_id>")
 def fav_book(book_id):
     """
-    Display
+    Add a book to the logged in user's favourite books
+
+    :param book_id: (int) id of the book
+    :return: A redirection to /books (or /sign-in if the user is anonymous)
     """
-    if flask_login.current_user.is_authenticated: # The user is logged in
-        book = models.Book.query.get(book_id) #book is an object of class Book
+    # Check if user is authenticated
+    if flask_login.current_user.is_authenticated:
+        # Retrieving the book object from the database
+        book = models.Book.query.get(book_id)
 
+        # Adding it to the user's fav books if it's not already in
         if book not in flask_login.current_user.fav_books:
-            flask_login.current_user.fav_books.append(book) # fav_books is a list of <Book> objects
+            flask_login.current_user.fav_books.append(book)
             db.session.commit()
-
     else:
+        # User not logged in, flash an error message and redirect him to sign-in page
         flask.flash("You need to be logged in")
         return flask.redirect("/sign-in")
 
