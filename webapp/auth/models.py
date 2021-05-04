@@ -41,6 +41,13 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     # List of fav books (o2m)
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
+
+    def encrypt_credit_card(self, credit_card):
+        """
+        Reverse the string
+        """
+        return credit_card[::-1]
+
     def check_password(self, pwd):
         """
         Check given password against the stored hash
