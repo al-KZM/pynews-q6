@@ -17,3 +17,7 @@ class ModelMixin:
         except:
             db.session.rollback()
             print(f"Failed to save user {self}, ignoring")
+
+
+    def __repr__(self):
+        return f"<{self.__class__.__name__.title()} {self.id}>"
