@@ -1,8 +1,11 @@
+from datetime import datetime
 from . import db
 
 class ModelMixin:
 
-    id = db.Column(db.Integer(), primary_key=True)
+    id          = db.Column(db.Integer(), primary_key=True)
+    created_at  = db.Column(db.DateTime(), default=datetime.now)
+    modified_at = db.Column(db.DateTime(), )
 
     def save(self):
         """
