@@ -58,6 +58,7 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     def credit_card(self, new_value):
         """
         'credit_card' setter
+        :param new_value: New credit card value
         """
         self.encrypted_credit_card = new_value[::-1]
 
