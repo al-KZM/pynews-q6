@@ -5,6 +5,7 @@ Classes:
 """
 import flask_login
 from werkzeug import security
+from sqlalchemy.ext.hybrid import hybrid_property
 
 from . import db, login_manager
 
@@ -47,10 +48,17 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
     @hybrid_property  # from sqlalchemy.ext.hybrid import hybrid_property
     def credit_card(self):
+        """
+        Hybrid property 'credit_card', wraps self.encrypted_credit_card
+        :return: Decrypted credit card value
+        """
         return self.encrypted_credit_card[::-1]
 
     @credit_card.setter
     def credit_card(self, new_value):
+        """
+        'credit_card' setter
+        """
         self.encrypted_credit_card = new_value[::-1]
 
     def check_password(self, pwd):
