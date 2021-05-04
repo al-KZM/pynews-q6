@@ -24,13 +24,9 @@ def user_loader(user_id):
 
 class User(db.Model, flask_login.UserMixin): # db.Model is required if you want to create an SQL model
     """
-    user
-    +-----------+----------------+--------------------+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+--------------------+
-    |  id (PK)  |  name (str64)  |  password (str64)  |  fav_quote (int) --> FK to Quote   | fav_quote_id (BTS) |
-    +-----------+----------------+--------------------+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+--------------------+
-    |           |                |                    |          <Quote> object            |        1           |
-    +-----------+----------------+--------------------+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+--------------------+
+
     """
+
     id = db.Column(db.Integer(), primary_key=True)
 
     name = db.Column(db.String(64))
