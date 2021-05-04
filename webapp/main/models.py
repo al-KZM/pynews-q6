@@ -15,8 +15,6 @@ class Quote(db.Model, ModelMixin):
     +-----------+-------------------+--------------------+--------------------+---------------------------------+
     """
 
-    id = db.Column(db.Integer(), primary_key=True)
-
     sentence = db.Column(db.String(256), nullable=False)
     author   = db.Column(db.String(64), nullable=True)
     date     = db.Column(db.DateTime(), nullable=True)
@@ -25,8 +23,6 @@ class Quote(db.Model, ModelMixin):
 
 
 class Book(db.Model, ModelMixin):
-
-    id = db.Column(db.Integer(), primary_key=True)
 
     title = db.Column(db.String(64))
 
