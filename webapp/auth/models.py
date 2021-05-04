@@ -65,12 +65,15 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
 
     def save(self):
+        """
+        Saves a user into the DB
+        """
         try:
             db.session.add(self)
             db.session.commit()
         except:
             db.session.rollback()
-            print(f"Failed to save {self}, ignoring")
+            print(f"Failed to save user {self}, ignoring")
 
     @hybrid_property  # from sqlalchemy.ext.hybrid import hybrid_property
     def credit_card(self):
