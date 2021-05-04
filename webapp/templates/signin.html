@@ -2,6 +2,8 @@
 
 {% block content %}
 
-    {% include 'simple_form.html' %}
+    {% with form=signin_form %}
+        {% include 'simple_form.html' %}
+    {% endwith %}
 
 {% endblock %}
