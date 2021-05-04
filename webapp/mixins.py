@@ -25,6 +25,5 @@ class ModelMixin:
     def update(self):
         db.session.commit()
 
-
     def __repr__(self):
         return f"<{self.__class__.__name__.title()} {self.id}>"
