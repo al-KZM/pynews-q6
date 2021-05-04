@@ -12,7 +12,6 @@ class ModelMixin:
         Saves a user into the DB
         """
         try:
-            if type(self) == db.Transient
             db.session.add(self)
             db.session.commit()
         except:

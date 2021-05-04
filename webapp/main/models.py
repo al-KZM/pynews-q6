@@ -26,3 +26,16 @@ class Book(db.Model, ModelMixin):
 
     title = db.Column(db.String(64))
 
+
+
+"""
+    db.Table
+       |
+       |
+       |
+    db.Model
+       |          ModelMixin
+       |              |
+       | <-------------
+      User
+"""

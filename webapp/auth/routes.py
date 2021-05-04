@@ -29,10 +29,8 @@ def signup():
 
             user.set_password(password)
 
-            # Add it to the DB
-            db.session.add(user)
-            # Commit your changes
-            db.session.commit()
+            user.save()
+
             print(f"{username} was registered successfully")
 
     return flask.render_template("signup.html", form=form)
