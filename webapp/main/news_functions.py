@@ -15,5 +15,6 @@ def get_news(query: str, date_from: str="2021-03-01") -> dict:
     }
 
     results = requests.get(url, params=params)
+
     return results.json()['articles']
 
