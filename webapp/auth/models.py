@@ -64,6 +64,13 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
 
+    def save(self):
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except:
+            db.session.rollback()
+
     @hybrid_property  # from sqlalchemy.ext.hybrid import hybrid_property
     def credit_card(self):
         """
