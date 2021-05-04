@@ -2,7 +2,7 @@
     {{ form.hidden_tag() }}
 
     {% for field_name, field in form._field.keys() %}
-    {% if field_name == 'submit' %}
+    {% if field_name != 'submit' %}
         <p>
             {{ field.label }}
             {{ field() }}
