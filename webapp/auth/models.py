@@ -32,9 +32,6 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
     mail = db.Column(db.String(254), nullable=True)
 
-    credit_card = db.Column(db.String(254))
-
-
     # Favorite quote (o2o)
     fav_quote = db.relationship('Quote', backref="user", uselist=False) # uselist=False <--> OneToOne relationship
 
@@ -42,17 +39,32 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
 
-    def decrypt_credit_card(self, encrypted_credit_card):
-        """
-        Reverse the string
-        """
-        return encrypted_credit_card[::-1]
+    encrypted_credit_card = db.Column(db.String(254)) # my_user.credit_card --> won't give the credit card
 
-    def encrypt_credit_card(self, credit_card):
-        """
-        Reverse the string
-        """
-        return credit_card[::-1] # Reversing a string
+    # Fake attribute (doesn't exist in the database)
+    # - Control the set() and get() operations
+
+    ##############################
+    #
+    # >>> my_user.credit_card
+    #   1234 5678 6789 1011
+    #
+    # >>> my_user.credit_card = "0102 0304 0506 0708"
+    #   ERROR: 'my_user.credit_card' is not an attribute
+    #
+    # >>> my_user.encrypted_credit_card
+    #   1101 9876 8765 4321
+    #
+    ##############################
+
+    @hybrid_property  # from sqlalchemy.ext.hybrid import hybrid_property
+    def credit_card(self):
+        return self.encrypted_credit_card[::-1]
+
+    @credit_card.setter
+    def credit_card(self, new_value):
+        self.encrypted_credit_card = new_value[::-1]
+
 
     def check_password(self, pwd):
         """
