@@ -10,6 +10,7 @@ import flask
 
 from .. import db, login_manager, mail_manager
 from .. import mail_functions
+from ..mixins import ModelMixin
 
 main_blueprint = flask.Blueprint("main", __name__)
 

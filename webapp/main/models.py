@@ -1,11 +1,11 @@
 # MODELS.py
 import flask_login
 
-from . import db, login_manager  # Database bridge created in __init__.py
+from . import db, login_manager, ModelMixin  # Database bridge created in __init__.py
 
 # First step:
 # Secondary table for the User<>Book ManyToMany relationship
-class Quote(db.Model):
+class Quote(db.Model, ModelMixin):
     """
     quote
     +-----------+-------------------+--------------------+--------------------+---------------------------------+
@@ -24,7 +24,7 @@ class Quote(db.Model):
     user_id  = db.Column(db.Integer(), db.ForeignKey("user.id"))
 
 
-class Book(db.Model):
+class Book(db.Model, ModelMixin):
 
     id = db.Column(db.Integer(), primary_key=True)
 
