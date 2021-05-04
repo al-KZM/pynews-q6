@@ -38,7 +38,6 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     # List of fav books (o2m)
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
-
     encrypted_credit_card = db.Column(db.String(254)) # my_user.credit_card --> won't give the credit card
 
     # Fake attribute (doesn't exist in the database)
@@ -64,7 +63,6 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     @credit_card.setter
     def credit_card(self, new_value):
         self.encrypted_credit_card = new_value[::-1]
-
 
     def check_password(self, pwd):
         """
