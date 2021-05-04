@@ -121,7 +121,7 @@ def fav_quote(quote_id):
         # Commit our changes
         db.session.commit()
 
-    return flask.redirect("/quotes")
+    return flask.redirect(flask.url_for('quotes_list'))
 
 
 @main_blueprint.route("/fav_book/<int:book_id>")
