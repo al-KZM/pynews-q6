@@ -57,7 +57,7 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(64))
-    password = db.Column(db.String(64))
+    password = db.Column(db.String(64)) # TODO: name it password_hash
     mail = db.Column(db.String(254), nullable=True)
     encrypted_credit_card = db.Column(db.String(254))
     fav_quote = db.relationship('Quote', backref="user", uselist=False)
