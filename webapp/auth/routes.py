@@ -19,6 +19,11 @@ def signup():
             password = form.password.data
             mail     = form.mail.data
 
+            #profile_pic = form.profile_pic.data
+            #filepath = "/uploads/pic1"
+            #profile_pic.save(filepath)
+
+
             # Create user
             user = models.User(name=username, mail=mail)
 
@@ -52,7 +57,7 @@ def signin():
                 flask.flash("Something went wrong.", "danger") # Put the message into the flashed messages
                 # To retrieve those messages: flask.get_flashed_messages()
 
-    return flask.render_template("signin.html", form=form)
+    return flask.render_template("signin.html", signin_form=form)
 
 @auth_blueprint.route("/sign-out")
 def signout():
