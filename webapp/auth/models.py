@@ -32,6 +32,9 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
     mail = db.Column(db.String(254), nullable=True)
 
+    credit_card = db.Column(db.String(254))
+
+
     # Favorite quote (o2o)
     fav_quote = db.relationship('Quote', backref="user", uselist=False) # uselist=False <--> OneToOne relationship
 
