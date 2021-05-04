@@ -42,11 +42,14 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
 
+    def decrypt_credit_card(self, encrypted_credit_card):
+        return encrypted_credit_card[::-1]
+
     def encrypt_credit_card(self, credit_card):
         """
         Reverse the string
         """
-        return credit_card[::-1]
+        return credit_card[::-1] # Reversing a string
 
     def check_password(self, pwd):
         """
