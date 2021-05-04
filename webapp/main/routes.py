@@ -126,11 +126,14 @@ def fav_quote(quote_id):
 
 @main_blueprint.route("/fav_book/<int:book_id>")
 def fav_book(book_id):
+    """
+    Display
+    """
     if flask_login.current_user.is_authenticated: # The user is logged in
         book = models.Book.query.get(book_id) #book is an object of class Book
 
         if book not in flask_login.current_user.fav_books:
-            flask_login.current_user.fav_books.main_blueprintend(book) # fav_books is a list of <Book> objects
+            flask_login.current_user.fav_books.append(book) # fav_books is a list of <Book> objects
             db.session.commit()
 
     else:
