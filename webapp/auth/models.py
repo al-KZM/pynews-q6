@@ -1,13 +1,12 @@
 """
 Contains all the database models related to authentication
+Classes:
+    - User
 """
-
-
 import flask_login
 from werkzeug import security
 
-from . import db, login_manager  # because it's in __init__, it can be retrieved by "from ."
-
+from . import db, login_manager
 
 user2book = db.Table(
     "user2book", # name of the table
