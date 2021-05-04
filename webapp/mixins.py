@@ -10,9 +10,12 @@ class ModelMixin:
     def save(self):
         """
         Saves a user into the DB
+        If the model is a transient (if it's not added to the DB yet), the function will add it
+        before commiting, else it will just commit the new modifications.
         """
         try:
-            db.session.add(self)
+            if self._sa_instance_state.transient:
+                db.session.add(self)
             db.session.commit()
         except:
             db.session.rollback()
@@ -22,8 +25,6 @@ class ModelMixin:
         db.session.delete(self)
         db.session.commit()
 
-    def update(self):
-        db.session.commit()
 
     def __repr__(self):
         return f"<{self.__class__.__name__.title()} {self.id}>"
