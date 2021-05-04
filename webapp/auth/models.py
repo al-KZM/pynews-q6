@@ -43,6 +43,9 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
 
 
     def decrypt_credit_card(self, encrypted_credit_card):
+        """
+        Reverse the string
+        """
         return encrypted_credit_card[::-1]
 
     def encrypt_credit_card(self, credit_card):
