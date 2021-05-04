@@ -5,7 +5,7 @@ class ModelMixin:
 
     id          = db.Column(db.Integer(), primary_key=True)
     created_at  = db.Column(db.DateTime(), default=datetime.now)
-    modified_at = db.Column(db.DateTime(), )
+    modified_at = db.Column(db.DateTime(), onupdate=datetime.now)
 
     def save(self):
         """
