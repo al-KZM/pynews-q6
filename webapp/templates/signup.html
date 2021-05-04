@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+    {% with additional_params={"enctype":"multipart/form-data"} %}
+    {% include 'simple_form.html' %}
+    {% endwith %}
+
+
     <form action="" method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <p>
