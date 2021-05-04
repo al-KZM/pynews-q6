@@ -7,7 +7,7 @@ import flask_login
 from werkzeug import security
 from sqlalchemy.ext.hybrid import hybrid_property
 
-from . import db, login_manager
+from . import db, login_manager, ModelMixin
 
 # Secondary table for the user<->book relationship
 user2book = db.Table(
@@ -22,7 +22,7 @@ def user_loader(user_id):
     return User.query.get(user_id)
 
 
-class User(db.Model, flask_login.UserMixin): # db.Model is required if you want to create an SQL model
+class User(db.Model, flask_login.UserMixin, ModelMixin): # db.Model is required if you want to create an SQL model
     """
     A class representing a user.
 
@@ -55,7 +55,6 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
         Hash the password and set it as this user's password
     """
 
-    id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(64))
     password = db.Column(db.String(64)) # TODO: name it password_hash
     mail = db.Column(db.String(254), nullable=True)
@@ -63,16 +62,6 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     fav_quote = db.relationship('Quote', backref="user", uselist=False)
     fav_books = db.relationship("Book", backref="users", secondary=user2book)
 
-    def save(self):
-        """
-        Saves a user into the DB
-        """
-        try:
-            db.session.add(self)
-            db.session.commit()
-        except:
-            db.session.rollback()
-            print(f"Failed to save user {self}, ignoring")
 
     @hybrid_property  # from sqlalchemy.ext.hybrid import hybrid_property
     def credit_card(self):
