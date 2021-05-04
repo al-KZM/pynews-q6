@@ -8,11 +8,12 @@ from werkzeug import security
 
 from . import db, login_manager
 
+# Secondary table for the user<->book relationship
 user2book = db.Table(
-    "user2book", # name of the table
+    "user2book",
     db.Column("user_id", db.Integer(), db.ForeignKey("user.id"), primary_key=True),
     db.Column("book_id", db.Integer(), db.ForeignKey("book.id"), primary_key=True),
-) # PK will be a combination of the two (1-2)
+)
 
 
 @login_manager.user_loader
@@ -55,12 +56,17 @@ class User(db.Model, flask_login.UserMixin): # db.Model is required if you want 
     def check_password(self, pwd):
         """
         Check given password against the stored hash
+
+        :param pwd: value to check against the stored password
+        :return: True if <pwd> match the stored one else False
         """
         return security.check_password_hash(self.password, pwd)
 
     def set_password(self, pwd):
         """
         Storing the hash of the password into the database
+
+        :param pwd: new password of the user
         """
         hashed = security.generate_password_hash(pwd)
         self.password = hashed
