@@ -1,7 +1,8 @@
-class ModelMixin():
 from . import db
 
 class ModelMixin:
+
+    id = db.Column(db.Integer(), primary_key=True)
 
     def save(self):
         """
