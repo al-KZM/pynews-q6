@@ -14,6 +14,7 @@ class ModelMixin:
         before commiting, else it will just commit the new modifications.
         """
         try:
+            # Checking if the model is a transient, if so, add it to the DB
             if self._sa_instance_state.transient:
                 db.session.add(self)
             db.session.commit()
